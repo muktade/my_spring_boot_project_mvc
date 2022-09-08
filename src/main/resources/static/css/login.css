@@ -1,0 +1,108 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+
+}
+
+.box {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    padding: 40px;
+    background: rgba(0, 0, 0, .8);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, .4);
+    border-radius: 10px;
+
+}
+
+h1 {
+    margin: 0 0 30px;
+    padding: 0;
+    color: white;
+    text-align: center;
+    border-bottom: 1px solid white;
+    text-transform: capitalize;
+}
+
+.input-box {
+    position: relative;
+}
+
+.input {
+    width: 100%;
+    padding: 3px 0px;
+
+    padding-bottom: px;
+    margin: 0px;
+    letter-spacing: 1px;
+    font-size: 18px;
+    color: #fff;
+    margin-bottom: 16px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+}
+
+.btn-submit:hover {
+    width: 100%;
+    /*            position: fixed;*/
+    opacity: .5;
+    transform: rotate(360deg);
+    position: static;
+    font-size: 20px;
+    /*            transform: scaleX(100%);*/
+}
+
+.lable {
+    position: absolute;
+    top: 0px;
+    left: 0;
+    font-size: 18px;
+    color: #fff;
+    pointer-events: none;
+    transition: 0.5s;
+    padding: 5px 0;
+}
+
+.input:focus~.lable,
+.input:valid~.lable {
+    top: -18px;
+    font-size: 12px;
+    color: #03a9f4;
+    border-bottom: 1px solid blue;
+    width: 100%;
+    padding: 0px 0;
+    margin: -0px 0;
+
+}
+
+.btn-submit {
+    background: transparent;
+    border: none;
+    font-size: 18px;
+    width: 50%;
+    color: white;
+    background: #03a9f4;
+    padding: 10px 0;
+    cursor: pointer;
+    border-radius: 5px;
+    outline: none;
+    transition: transform 2s;
+    top: 0;
+    left: 25%;
+    position: relative;
+}
+
+.input:focus~.input {
+    background-color: #fff;
+
+}
+.input,
+.lable {
+    margin-bottom: 25px;
+}
