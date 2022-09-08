@@ -18,11 +18,11 @@ public interface UserDao extends JpaRepository<User, Long> {
     boolean existsByEmail(String email);
 
 
-    Optional<User> findByUserNameOrEmail(Long aLong);
+    Optional<User> findByUserNameOrEmail(String userName, String userEmail);
 
     User findByUserName(String userName);
 
-    @Query("SELECT u FROM User u WHERE u.userName = :userName or u.userEmail = :email")
+    @Query("SELECT u FROM User u WHERE u.userName = :userName or u.email = :email")
     User authUser(
             @Param("userName") String userName,
             @Param("email")  String email

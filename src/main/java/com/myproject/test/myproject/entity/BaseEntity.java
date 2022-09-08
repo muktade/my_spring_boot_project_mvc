@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 @MappedSuperclass
 @Data
-@Entity
+//@Entity
 
 public abstract class BaseEntity implements Serializable {
 

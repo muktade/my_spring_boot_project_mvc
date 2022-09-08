@@ -40,13 +40,13 @@ public class UserServiceImp implements UserService {
     @Override
     public String updateUser(User newUser, String oldRawPassword) {
         User oldUser = userDao.findByUserName(getUserName());
-        String email = newUser.getUserEmail();
-        if(email !=null && !email.isEmpty()&& !email.equals(oldUser.getUserEmail())){
+        String email = newUser.getEmail();
+        if(email !=null && !email.isEmpty()&& !email.equals(oldUser.getEmail())){
             boolean emailExits = userDao.existsByEmail(email);
             if(emailExits){
                 return "00";
             }
-            oldUser.setUserEmail(email);
+            oldUser.setEmail(email);
         }
         String password = newUser.getUserPassword();
         if(password !=null &&!password.isEmpty()){
@@ -88,7 +88,7 @@ public class UserServiceImp implements UserService {
     private String alreadyExists(User user){
         if(userDao.existsByUserName(user.getUserName())){
             return "User already Exists";
-        } else if(userDao.existsByEmail(user.getUserEmail())) {
+        } else if(userDao.existsByEmail(user.getEmail())) {
             return "Email already exists";
         }
         return null;

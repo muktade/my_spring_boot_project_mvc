@@ -30,7 +30,8 @@ public class UserController {
             return "redirect : invalidate";
         }
         else {
-
+            //////////
+return null;
         }
     }
 

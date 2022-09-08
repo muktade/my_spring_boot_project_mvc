@@ -18,13 +18,16 @@ public class Admin extends BaseEntity {
     @Column(name = "phone", nullable = false)
     private String phone;
 
+    @Column(name = "email", nullable = false)
+    private String email;
+
     @Column(name = "national_id", unique = true)
     private String nationalId;
 
-    @Column(name = "present_address",length = 65535)
+    @Column(name = "present_address",length = 65535, columnDefinition = "text")
     private String presentAddress;
 
-    @Column(name = "permanent_address", length = 65535)
+    @Column(name = "permanent_address", length = 65535, columnDefinition = "text")
     private String permanentAddress;
 
     @Lob
