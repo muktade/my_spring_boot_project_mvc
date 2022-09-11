@@ -1,5 +1,6 @@
 package com.myproject.test.myproject.service;
 
+import com.myproject.test.myproject.entity.Admin;
 import com.myproject.test.myproject.entity.User;
 
 public interface UserService {
@@ -15,4 +16,6 @@ public interface UserService {
     Integer delete(String userName);
 
     Integer deactivate(String userName);
+
+    User getByUserName(String userName);
 }

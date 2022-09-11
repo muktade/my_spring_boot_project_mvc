@@ -44,7 +44,7 @@ public class UserServiceImp implements UserService {
         if(email !=null && !email.isEmpty()&& !email.equals(oldUser.getEmail())){
             boolean emailExits = userDao.existsByEmail(email);
             if(emailExits){
-                return "00";
+                return "Email or phone already in use. Please enter a new email or leave the field empty";
             }
             oldUser.setEmail(email);
         }
@@ -53,8 +53,9 @@ public class UserServiceImp implements UserService {
             boolean validPassword=bCryptPasswordEncoder.matches(oldRawPassword ,oldUser.getUserPassword());
             if(validPassword){
                 oldUser.setUserPassword(bCryptPasswordEncoder.encode(password));
+                return "Password change successful";
             }else{
-                return "o1";
+                return "Invalid password";
             }
         }
         userDao.save(oldUser);
@@ -83,6 +84,11 @@ public class UserServiceImp implements UserService {
     public Integer deactivate(String userName) {
 
         return userDao.deactive(userName);
+    }
+
+    @Override
+    public User getByUserName(String userName) {
+        return userDao.findByUserName(userName);
     }
 
     private String alreadyExists(User user){
