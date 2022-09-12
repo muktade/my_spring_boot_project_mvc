@@ -45,7 +45,7 @@ public class LoginController {
             message = "You have been logged out successfully";
         }
         List<Role>  roles = roleDao.findAll();
-        moduleController.multiChoiceFormModule(model,"login",new User(), "/login", roles, message);
+        moduleController.multiChoiceFormModule(model,"user_login",new User(), "/login", roles, message);
         return "html/index";
     }
 
