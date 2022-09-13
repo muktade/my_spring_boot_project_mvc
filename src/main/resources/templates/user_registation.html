@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <title>Registration</title>
-  <link href="../static/dist/css/login.css" rel="stylesheet">
+  <link th:href="@{/dist/css/login.css}" rel="stylesheet">
 
 </head>
 <body>
@@ -11,9 +11,7 @@
   <h1>
     Login
   </h1>
-  <form
-          action="user_login.html"
-          method="post">
+  <form action="user_login.html" method="post">
     <div class="input-box">
       <input class="input" name="user" required type="text">
       <label class="lable">User Name</label>
@@ -32,7 +30,7 @@
     </div>
     <div class="input-box">
       <input class="input" value="user" name="role" readonly type="text">
-      <label class="lable">User</label>
+      <label class="lable"></label>
     </div>
     <div class="input-box">
       <input class="input" name="pass" required type="password">
@@ -46,7 +44,7 @@
       <input class="btn-submit" name="submit" type="submit">
     </div>
   </form>
-  <div style="color: white" >already have a <b><a style="color: red" href="user_login.html">account?</a></b></div>
+  <div style="color: white" >already have a <b><a style="color: red" th:href="@{/login}">account?</a></b></div>
 </div>
 </body>
 </html>

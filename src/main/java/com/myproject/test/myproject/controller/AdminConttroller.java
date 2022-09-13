@@ -35,7 +35,7 @@ public class AdminConttroller {
     @GetMapping("register")
     public String registerForm(Model model){
         moduleController.formModel(model,"register", new Admin(), "/admin/register", null);
-        return "/html/index";
+        return "/user_registation";
 
     }
 

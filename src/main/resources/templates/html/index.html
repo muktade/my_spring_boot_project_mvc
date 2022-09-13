@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="wide wow-animation" lang="en">
+<html class="wide wow-animation" lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <title>Home</title>
@@ -8,12 +8,12 @@
     content="width=device-width height=device-height initial-scale=1.0 maximum-scale=1.0 user-scalable=0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta charset="utf-8">
-  <link rel="icon" href="../../static/dist/images/favicon.ico" type="image/x-icon">
+  <link rel="icon" th:href="@{/dist/images/favicon.ico}" type="image/x-icon">
   <link rel="stylesheet" type="text/css"
-    href="//fonts.googleapis.com/css?family=Work+Sans:300,400,500,700,800%7CPoppins:300,400,700">
-  <link rel="stylesheet" href="../../static/dist/css/bootstrap.css">
-  <link rel="stylesheet" href="../../static/dist/css/fonts.css">
-  <link rel="stylesheet" href="../../static/dist/css/style.css" id="main-styles-link">
+    th:href="@{https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,700,800%7CPoppins:300,400,700}">
+  <link rel="stylesheet" th:href="@{/dist/css/bootstrap.css}">
+  <link rel="stylesheet" th:href="@{/dist/css/fonts.css}">
+  <link rel="stylesheet" th:href="@{/dist/css/style.css}" id="main-styles-link">
   <style>
     .ie-panel {
       display: none;
@@ -35,12 +35,12 @@
 
 <body>
 <!--  <div class="ie-panel"><a href="http://windows.microsoft.com/en-US/internet-explorer/"><img-->
-<!--          src="../../static/dist/images/ie8-panel/warning_bar_0000_us.jpg" height="42" width="820"-->
+<!--          th:src="@{/dist/images/ie8-panel/warning_bar_0000_us.jpg}" height="42" width="820"-->
 <!--          alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."></a>-->
 <!--  </div>-->
   <div class="preloader">
-    <div class="preloader-logo"><img src="../../static/dist/images/logo-default-151x44.png" alt="" width="151" height="44"
-                                     srcset="../../static/dist/images/logo-default-151x44.png 2x" />
+    <div class="preloader-logo"><img th:src="@{/dist/images/logo-default-151x44.png}" alt="" width="151" height="44"
+                                     th:srcset="@{/dist/images/logo-default-151x44.png 2x}" />
     </div>
     <div class="preloader-body">
       <div id="loadingProgressG">
@@ -50,7 +50,7 @@
   </div>
   <div class="page">
     <!-- Page Header
-      <a class="banner banner-top" href="https://www.templatemonster.com/intense-multipurpose-html-template.html" target="_blank"><img src="images/intense_02.jpg" alt=""/></a> -->
+      <a class="banner banner-top" href="https://www.templatemonster.com/intense-multipurpose-html-template.html" target="_blank"><img th:src="images/intense_02.jpg" alt=""/></a> -->
     <header class="section novi-background page-header">
       <!-- RD Navbar-->
       <div class="rd-navbar-wrap">
@@ -67,8 +67,8 @@
                 <!-- RD Navbar Toggle-->
                 <button class="rd-navbar-toggle" data-rd-navbar-toggle="#rd-navbar-nav-wrap-1"><span></span></button>
                 <!-- RD Navbar Brand--><a class="rd-navbar-brand" href="index.html"><img
-                      src="../../static/dist/images/logo-default-151x44.png" alt="" width="151" height="44"
-                      srcset="../../static/dist/images/logo-default-151x44.png 2x" /></a>
+                      th:src="@{/dist/images/logo-default-151x44.png}" alt="" width="151" height="44"
+                      th:srcset="@{/dist/images/logo-default-151x44.png 2x}" /></a>
               </div>
               <div class="rd-navbar-collapse">
                 <button class="rd-navbar-collapse-toggle rd-navbar-fixed-element-1"
@@ -126,7 +126,7 @@
     <section class="section swiper-container swiper-slider swiper-slider-minimal" data-loop="true"
       data-slide-effect="fade" data-autoplay="4500" data-simulate-touch="true">
       <div class="swiper-wrapper">
-        <div class="swiper-slide swiper-slide_video" data-slide-bg="../../static/dist/images/slider-minimal-slide-1-1920x968.jpg">
+        <div class="swiper-slide swiper-slide_video" th:data-slide-bg="@{/dist/images/slider-minimal-slide-1-1920x968.jpg}">
           <div class="container">
             <div class="jumbotron-classic-content">
               <div class="wow-outer">
@@ -145,7 +145,7 @@
             </div>
           </div>
         </div>
-        <div class="swiper-slide" data-slide-bg="../../static/dist/images/slider-minimal-slide-2-1920x968.jpg">
+        <div class="swiper-slide" th:data-slide-bg="@{/dist/images/slider-minimal-slide-2-1920x968.jpg}">
           <div class="container">
             <div class="jumbotron-classic-content">
               <div class="wow-outer">
@@ -163,7 +163,7 @@
             </div>
           </div>
         </div>
-        <div class="swiper-slide" data-slide-bg="../../static/dist/images/slider-minimal-slide-3-1920x968.jpg">
+        <div class="swiper-slide" th:data-slide-bg="@{/dist/images/slider-minimal-slide-3-1920x968.jpg}">
           <div class="container">
             <div class="jumbotron-classic-content">
               <div class="wow-outer">
@@ -195,7 +195,7 @@
           <div class="col-md-6 wow-outer">
             <!-- Post Modern-->
             <article class="post-modern wow slideInLeft"><a class="post-modern-media" href="#"><img
-                    src="../../static/dist/images/grid-blog-1-571x353.jpg" alt="" width="571" height="353" /></a>
+                    th:src="@{/dist/images/grid-blog-1-571x353.jpg}" alt="" width="571" height="353" /></a>
               <h4 class="post-modern-title"><a class="post-modern-title" href="#">5619 Walnut Hill Ln, Dallas, TX
                   75229</a></h4>
               <ul class="post-modern-meta">
@@ -209,7 +209,7 @@
           <div class="col-md-6 wow-outer">
             <!-- Post Modern-->
             <article class="post-modern wow slideInLeft"><a class="post-modern-media" href="#"><img
-                    src="../../static/dist/images/grid-blog-2-571x353.jpg" alt="" width="571" height="353" /></a>
+                   th:src="@{/dist/images/grid-blog-2-571x353.jpg}" alt="" width="571" height="353" /></a>
               <h4 class="post-modern-title"><a class="post-modern-title" href="#">1808 Bolingbroke Pl, Fort Worth, TX
                   76140</a></h4>
               <ul class="post-modern-meta">
@@ -223,7 +223,7 @@
           <div class="col-md-6 wow-outer">
             <!-- Post Modern-->
             <article class="post-modern wow slideInLeft"><a class="post-modern-media" href="#"><img
-                    src="../../static/dist/images/grid-blog-3-571x353.jpg" alt="" width="571" height="353" /></a>
+                    th:src="@{/dist/images/grid-blog-3-571x353.jpg}" alt="" width="571" height="353" /></a>
               <h4 class="post-modern-title"><a class="post-modern-title" href="#">924 Bel Air Rd, Los Angeles, CA
                   90077</a></h4>
               <ul class="post-modern-meta">
@@ -237,7 +237,7 @@
           <div class="col-md-6 wow-outer">
             <!-- Post Modern-->
             <article class="post-modern wow slideInLeft"><a class="post-modern-media" href="#"><img
-                    src="../../static/dist/images/grid-blog-4-571x353.jpg" alt="" width="571" height="353" /></a>
+                    th:src="@{/dist/images/grid-blog-4-571x353.jpg}" alt="" width="571" height="353" /></a>
               <h4 class="post-modern-title"><a class="post-modern-title" href="#">13510 W Cheery Lynn Rd, Avondale, AZ
                   85392</a></h4>
               <ul class="post-modern-meta">
@@ -302,7 +302,7 @@
           <div class="col-sm-6 col-lg-3">
             <!-- Thumbnail Light-->
             <article class="thumbnail-light"><a class="thumbnail-light-media" href="#"><img
-                    class="thumbnail-light-image" src="../../static/dist/images/service-thumbnail-1-270x300.jpg" alt="" width="270"
+                    class="thumbnail-light-image" th:src="@{/dist/images/service-thumbnail-1-270x300.jpg}" alt="" width="270"
                     height="300" /></a>
               <h4 class="thumbnail-light-title"><a href="#">Single-Family Homes</a></h4>
             </article>
@@ -310,7 +310,7 @@
           <div class="col-sm-6 col-lg-3">
             <!-- Thumbnail Light-->
             <article class="thumbnail-light"><a class="thumbnail-light-media" href="#"><img
-                    class="thumbnail-light-image" src="../../static/dist/images/service-thumbnail-2-270x300.jpg" alt="" width="270"
+                    class="thumbnail-light-image" th:src="@{/dist/images/service-thumbnail-2-270x300.jpg}" alt="" width="270"
                     height="300" /></a>
               <h4 class="thumbnail-light-title"><a href="#">Townhouses</a></h4>
             </article>
@@ -318,7 +318,7 @@
           <div class="col-sm-6 col-lg-3">
             <!-- Thumbnail Light-->
             <article class="thumbnail-light"><a class="thumbnail-light-media" href="#"><img
-                    class="thumbnail-light-image" src="../../static/dist/images/service-thumbnail-3-270x300.jpg" alt="" width="270"
+                    class="thumbnail-light-image" th:src="@{/dist/images/service-thumbnail-3-270x300.jpg}" alt="" width="270"
                     height="300" /></a>
               <h4 class="thumbnail-light-title"><a href="#">Multi-Family Homes</a></h4>
             </article>
@@ -326,7 +326,7 @@
           <div class="col-sm-6 col-lg-3">
             <!-- Thumbnail Light-->
             <article class="thumbnail-light"><a class="thumbnail-light-media" href="#"><img
-                    class="thumbnail-light-image" src="../../static/dist/images/service-thumbnail-4-270x300.jpg" alt="" width="270"
+                    class="thumbnail-light-image" th:src="@{/dist/images/service-thumbnail-4-270x300.jpg}" alt="" width="270"
                     height="300" /></a>
               <h4 class="thumbnail-light-title"><a href="#">Condominiums</a></h4>
             </article>
@@ -344,7 +344,7 @@
             <!-- Profile Creative-->
             <article class="profile-creative wow slideInLeft">
               <figure class="profile-creative-figure"><img class="profile-creative-image"
-                                                           src="../../static/dist/images/team-1-270x273.jpg" alt="" width="270" height="273" />
+                                                           th:src="@{/dist/images/team-1-270x273.jpg}" alt="" width="270" height="273" />
               </figure>
               <div class="profile-creative-main">
                 <h5 class="profile-creative-title"><a href="#">Nathalie Porter</a></h5>
@@ -362,7 +362,7 @@
             <!-- Profile Creative-->
             <article class="profile-creative wow slideInLeft" data-wow-delay=".2s">
               <figure class="profile-creative-figure"><img class="profile-creative-image"
-                                                           src="../../static/dist/images/team-2-270x273.jpg" alt="" width="270" height="273" />
+                                                           th:src="@{/dist/images/team-2-270x273.jpg}" alt="" width="270" height="273" />
               </figure>
               <div class="profile-creative-main">
                 <h5 class="profile-creative-title"><a href="#">John Thompson</a></h5>
@@ -380,7 +380,7 @@
             <!-- Profile Creative-->
             <article class="profile-creative wow slideInLeft">
               <figure class="profile-creative-figure"><img class="profile-creative-image"
-                                                           src="../../static/dist/images/team-3-270x273.jpg" alt="" width="270" height="273" />
+                                                           th:src="@{/dist/images/team-3-270x273.jpg}" alt="" width="270" height="273" />
               </figure>
               <div class="profile-creative-main">
                 <h5 class="profile-creative-title"><a href="#">Brian Payne</a></h5>
@@ -398,7 +398,7 @@
             <!-- Profile Creative-->
             <article class="profile-creative wow slideInLeft" data-wow-delay=".2s">
               <figure class="profile-creative-figure"><img class="profile-creative-image"
-                                                           src="../../static/dist/images/team-4-270x273.jpg" alt="" width="270" height="273" />
+                                                           th:src="@{/dist/images/team-4-270x273.jpg}" alt="" width="270" height="273" />
               </figure>
               <div class="profile-creative-main">
                 <h5 class="profile-creative-title"><a href="#">Marie Fernandez</a></h5>
@@ -441,7 +441,7 @@
           data-margin="30" data-stage-padding="0" data-mouse-drag="false">
           <blockquote class="quote-classic">
             <div class="quote-classic-meta">
-              <div class="quote-classic-avatar"><img src="../../static/dist/images/testimonials-person-6-96x96.jpg" alt="" width="96"
+              <div class="quote-classic-avatar"><img th:src="@{/dist/images/testimonials-person-6-96x96.jpg}" alt="" width="96"
                                                      height="96" />
               </div>
               <div class="quote-classic-info">
@@ -456,7 +456,7 @@
           </blockquote>
           <blockquote class="quote-classic">
             <div class="quote-classic-meta">
-              <div class="quote-classic-avatar"><img src="../../static/dist/images/testimonials-person-1-96x96.jpg" alt="" width="96"
+              <div class="quote-classic-avatar"><img th:src="@{/dist/images/testimonials-person-1-96x96.jpg}" alt="" width="96"
                                                      height="96" />
               </div>
               <div class="quote-classic-info">
@@ -471,7 +471,7 @@
           </blockquote>
           <blockquote class="quote-classic">
             <div class="quote-classic-meta">
-              <div class="quote-classic-avatar"><img src="../../static/dist/images/testimonials-person-2-96x96.jpg" alt="" width="96"
+              <div class="quote-classic-avatar"><img th:src="@{/dist/images/testimonials-person-2-96x96.jpg}" alt="" width="96"
                                                      height="96" />
               </div>
               <div class="quote-classic-info">
@@ -486,7 +486,7 @@
           </blockquote>
           <blockquote class="quote-classic">
             <div class="quote-classic-meta">
-              <div class="quote-classic-avatar"><img src="../../static/dist/images/testimonials-person-3-96x96.jpg" alt="" width="96"
+              <div class="quote-classic-avatar"><img th:src="@{/dist/images/testimonials-person-3-96x96.jpg}" alt="" width="96"
                                                      height="96" />
               </div>
               <div class="quote-classic-info">
@@ -501,7 +501,7 @@
           </blockquote>
           <blockquote class="quote-classic">
             <div class="quote-classic-meta">
-              <div class="quote-classic-avatar"><img src="../../static/dist/images/testimonials-person-4-96x96.jpg" alt="" width="96"
+              <div class="quote-classic-avatar"><img th:src="@{/dist/images/testimonials-person-4-96x96.jpg}" alt="" width="96"
                                                      height="96" />
               </div>
               <div class="quote-classic-info">
@@ -517,7 +517,7 @@
           </blockquote>
           <blockquote class="quote-classic">
             <div class="quote-classic-meta">
-              <div class="quote-classic-avatar"><img src="../../static/dist/images/testimonials-person-5-96x96.jpg" alt="" width="96"
+              <div class="quote-classic-avatar"><img th:src="@{/dist/images/testimonials-person-5-96x96.jpg}" alt="" width="96"
                                                      height="96" />
               </div>
               <div class="quote-classic-info">
@@ -534,7 +534,7 @@
       </div>
     </section>
     <!-- <a class="banner" href="https://www.templatemonster.com/intense-multipurpose-html-template.html"
-      target="_blank"><img src="images/intense_big_02.jpg" alt="" /></a> -->
+      target="_blank"><img th:src="images/intense_big_02.jpg" alt="" /></a> -->
     <footer class="section novi-background footer-advanced bg-gray-700">
       <div class="footer-advanced-main">
         <div class="container">
@@ -569,44 +569,44 @@
             <div class="col-sm-5 col-md-7 col-lg-4">
               <h5 class="font-weight-bold text-uppercase text-white">Gallery</h5>
               <div class="row row-x-10" data-lightgallery="group">
-                <div class="col-3 col-sm-4 col-md-3"><a class="thumbnail-minimal" href="../../static/dist/images/gallery-original-1.jpg"
+                <div class="col-3 col-sm-4 col-md-3"><a class="thumbnail-minimal" th:href="@{/dist/images/gallery-original-1.jpg}"
                     data-lightgallery="item"><img class="thumbnail-minimal-image"
-                                                  src="../../static/dist/images/footer-gallery-1-85x85.jpg" alt="" />
+                                                  th:src="@{/dist/images/footer-gallery-1-85x85.jpg}" alt="" />
                     <div class="thumbnail-minimal-caption"></div>
                   </a></div>
-                <div class="col-3 col-sm-4 col-md-3"><a class="thumbnail-minimal" href="../../static/dist/images/gallery-original-2.jpg"
+                <div class="col-3 col-sm-4 col-md-3"><a class="thumbnail-minimal" th:href="@{/dist/images/gallery-original-2.jpg}"
                     data-lightgallery="item"><img class="thumbnail-minimal-image"
-                                                  src="../../static/dist/images/footer-gallery-2-85x85.jpg" alt="" />
+                                                  th:src="@{/dist/images/footer-gallery-2-85x85.jpg}" alt="" />
                     <div class="thumbnail-minimal-caption"></div>
                   </a></div>
-                <div class="col-3 col-sm-4 col-md-3"><a class="thumbnail-minimal" href="../../static/dist/images/gallery-original-3.jpg"
+                <div class="col-3 col-sm-4 col-md-3"><a class="thumbnail-minimal" th:href="@{/dist/images/gallery-original-3.jpg}"
                     data-lightgallery="item"><img class="thumbnail-minimal-image"
-                                                  src="../../static/dist/images/footer-gallery-3-85x85.jpg" alt="" />
+                                                  th:src="@{/dist/images/footer-gallery-3-85x85.jpg}" alt="" />
                     <div class="thumbnail-minimal-caption"></div>
                   </a></div>
-                <div class="col-3 col-sm-4 col-md-3"><a class="thumbnail-minimal" href="../../static/dist/images/gallery-original-4.jpg"
+                <div class="col-3 col-sm-4 col-md-3"><a class="thumbnail-minimal" th:href="@{/dist/images/gallery-original-4.jpg}"
                     data-lightgallery="item"><img class="thumbnail-minimal-image"
-                                                  src="../../static/dist/images/footer-gallery-4-85x85.jpg" alt="" />
+                                                  th:src="@{/dist/images/footer-gallery-4-85x85.jpg}" alt="" />
                     <div class="thumbnail-minimal-caption"></div>
                   </a></div>
-                <div class="col-3 col-sm-4 col-md-3"><a class="thumbnail-minimal" href="../../static/dist/images/gallery-original-5.jpg"
+                <div class="col-3 col-sm-4 col-md-3"><a class="thumbnail-minimal" th:href="@{/dist/images/gallery-original-5.jpg}"
                     data-lightgallery="item"><img class="thumbnail-minimal-image"
-                                                  src="../../static/dist/images/footer-gallery-5-85x85.jpg" alt="" />
+                                                  th:src="@{/dist/images/footer-gallery-5-85x85.jpg}" alt="" />
                     <div class="thumbnail-minimal-caption"></div>
                   </a></div>
-                <div class="col-3 col-sm-4 col-md-3"><a class="thumbnail-minimal" href="../../static/dist/images/gallery-original-6.jpg"
+                <div class="col-3 col-sm-4 col-md-3"><a class="thumbnail-minimal" th:href="@{/dist/images/gallery-original-6.jpg}"
                     data-lightgallery="item"><img class="thumbnail-minimal-image"
-                                                  src="../../static/dist/images/footer-gallery-6-85x85.jpg" alt="" />
+                                                  th:src="@{/dist/images/footer-gallery-6-85x85.jpg}" alt="" />
                     <div class="thumbnail-minimal-caption"> </div>
                   </a></div>
-                <div class="col-3 col-sm-4 col-md-3"><a class="thumbnail-minimal" href="../../static/dist/images/gallery-original-7.jpg"
+                <div class="col-3 col-sm-4 col-md-3"><a class="thumbnail-minimal" th:href="@{/dist/images/gallery-original-7.jpg}"
                     data-lightgallery="item"><img class="thumbnail-minimal-image"
-                                                  src="../../static/dist/images/footer-gallery-7-85x85.jpg" alt="" />
+                                                  th:src="@{/dist/images/footer-gallery-7-85x85.jpg}" alt="" />
                     <div class="thumbnail-minimal-caption"></div>
                   </a></div>
-                <div class="col-3 col-sm-4 col-md-3"><a class="thumbnail-minimal" href="../../static/dist/images/gallery-original-8.jpg"
+                <div class="col-3 col-sm-4 col-md-3"><a class="thumbnail-minimal" th:href="@{/dist/images/gallery-original-8.jpg}"
                     data-lightgallery="item"><img class="thumbnail-minimal-image"
-                                                  src="../../static/dist/images/footer-gallery-8-85x85.jpg" alt="" />
+                                                  th:src="@{/dist/images/footer-gallery-8-85x85.jpg}" alt="" />
                     <div class="thumbnail-minimal-caption"></div>
                   </a></div>
               </div>
@@ -619,20 +619,20 @@
           <div class="footer-advanced-layout">
             <div>
               <ul class="list-nav">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about-us.html">About</a></li>
-                <li><a href="#">Properties</a></li>
-                <li><a href="#">Blog</a></li>
-                <li><a href="contacts.html">Contacts</a></li>
+                <li><a th:href="index.html">Home</a></li>
+                <li><a th:href="about-us.html">About</a></li>
+                <li><a th:href="@{#}">Properties</a></li>
+                <li><a th:href="@{#}">Blog</a></li>
+                <li><a th:href="contacts.html">Contacts</a></li>
               </ul>
             </div>
             <div>
               <ul class="foter-social-links list-inline list-inline-md">
-                <li><a class="icon novi-icon icon-sm link-default mdi mdi-facebook" href="#"></a></li>
-                <li><a class="icon novi-icon icon-sm link-default mdi mdi-twitter" href="#"></a></li>
-                <li><a class="icon novi-icon icon-sm link-default mdi mdi-instagram" href="#"></a></li>
-                <li><a class="icon novi-icon icon-sm link-default mdi mdi-google" href="#"></a></li>
-                <li><a class="icon novi-icon icon-sm link-default mdi mdi-linkedin" href="#"></a></li>
+                <li><a class="icon novi-icon icon-sm link-default mdi mdi-facebook" th:href="@{#}"></a></li>
+                <li><a class="icon novi-icon icon-sm link-default mdi mdi-twitter" th:href="@{#}"></a></li>
+                <li><a class="icon novi-icon icon-sm link-default mdi mdi-instagram" th:href="@{#}"></a></li>
+                <li><a class="icon novi-icon icon-sm link-default mdi mdi-google" th:href="@{#}"></a></li>
+                <li><a class="icon novi-icon icon-sm link-default mdi mdi-linkedin" th:href="@{#}"></a></li>
               </ul>
             </div>
           </div>
@@ -643,11 +643,11 @@
       </div>
       <div class="footer-advanced-aside">
         <div class="container">
-          <div class="footer-advanced-layout"><a class="brand" href="index.html"><img src="../../static/dist/images/logo-light-115x34.png"
-                alt="" width="115" height="34" srcset="../../static/dist/images/logo-light-115x34.png 2x" /></a>
+          <div class="footer-advanced-layout"><a class="brand" th:href="index.html"><img th:src="@{/dist/images/logo-light-115x34.png}"
+                alt="" width="115" height="34" th:srcset="@{/dist/images/logo-light-115x34.png 2x}" /></a>
             <!-- Rights-->
             <p class="rights"><span>&copy;&nbsp;</span><span class="copyright-year"></span>. All Rights Reserved. Design
-              by <a href="https://www.templatemonster.com">TemplateMonster</a></p>
+              by <a th:href="@{https://www.templatemonster.com}">TemplateMonster</a></p>
           </div>
         </div>
       </div>
@@ -656,8 +656,8 @@
   <!-- Global Mailform Output-->
   <div class="snackbars" id="form-output-global"></div>
   <!-- Javascript-->
-  <script src="../../static/dist/js/core.min.js"></script>
-  <script src="../../static/dist/js/script.js"></script>
+  <script th:src="@{/dist/js/core.min.js}"></script>
+  <script th:src="@{/dist/js/script.js}"></script>
 </body>
 
 </html>

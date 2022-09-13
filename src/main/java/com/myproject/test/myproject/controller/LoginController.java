@@ -46,7 +46,8 @@ public class LoginController {
         }
         List<Role>  roles = roleDao.findAll();
         moduleController.multiChoiceFormModule(model,"user_login",new User(), "/login", roles, message);
-        return "html/index";
+//        return "html/index";
+        return "user_login";
     }
 
     @PostMapping(value = {"/loginsuccess", "/loginsuccess/{message}"})

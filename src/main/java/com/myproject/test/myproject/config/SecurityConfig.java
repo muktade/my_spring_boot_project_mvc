@@ -28,9 +28,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity httpSecurity) throws Exception{
 
         httpSecurity.authorizeRequests()
-                .antMatchers("/static/**","/dist/**"  ,"/css/**","/fonts/**","/js/**","/images/**","/ie8-panel/**").permitAll()
+                .antMatchers("/static/**","/dist/**","/css/**","/fonts/**","/js/**","/images/**","/ie8-panel/**").permitAll()
+//                .antMatchers("../static/dist/css/login.css").permitAll()
+                .antMatchers("/admin/register","/", "/admin").permitAll()
                 .anyRequest().authenticated()
-                .and().formLogin().loginPage("/user_login").permitAll()
+                .and().formLogin().loginPage("/login").permitAll()
                 .successForwardUrl("/loginsuccess")
                 .and().logout()
                 .invalidateHttpSession(true)
