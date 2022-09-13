@@ -30,7 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         httpSecurity.authorizeRequests()
                 .antMatchers("/static/**","/dist/**","/css/**","/fonts/**","/js/**","/images/**","/ie8-panel/**").permitAll()
 //                .antMatchers("../static/dist/css/login.css").permitAll()
-                .antMatchers("/admin/register","/", "/admin").permitAll()
+                .antMatchers("/admin/register","/", "/admin","/admin/registeruser").permitAll()
                 .anyRequest().authenticated()
                 .and().formLogin().loginPage("/login").permitAll()
                 .successForwardUrl("/loginsuccess")

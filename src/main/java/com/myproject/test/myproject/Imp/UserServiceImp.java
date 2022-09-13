@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -29,7 +30,7 @@ public class UserServiceImp implements UserService {
     @Override
     public String registerUser(User user, String roleName) {
         String status = this.alreadyExists(user);
-        if(status !=null){
+        if (status != null) {
             return status;
         }
         setUserFinalVale(user, roleName);
@@ -38,28 +39,51 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
+    public String userRegister(User user, MultipartFile pht) {
+//        String status= alreadyExists(admin)
+
+        String photo = pht.toString();
+        user.setPhoto(pht);
+//                user.setRoles("USER");
+//                user.setIsVerified(true);
+//                userDao.save(user);
+//                return  (photo != null) ? "1":"0";
+        String status = registerUser(user, "USER");
+
+        if (!status.equals("1")) {
+            return status;
+        } else {
+//            String photo = pht.toString();
+//            admin.setPhoto(photo);
+//            admin.setIsActive(true);
+//            adminDao.save(admin);
+            return (photo != null) ? "1" : "0";
+        }
+    }
+
+    @Override
     public String updateUser(User newUser, String oldRawPassword) {
         User oldUser = userDao.findByUserName(getUserName());
         String email = newUser.getEmail();
-        if(email !=null && !email.isEmpty()&& !email.equals(oldUser.getEmail())){
+        if (email != null && !email.isEmpty() && !email.equals(oldUser.getEmail())) {
             boolean emailExits = userDao.existsByEmail(email);
-            if(emailExits){
+            if (emailExits) {
                 return "Email or phone already in use. Please enter a new email or leave the field empty";
             }
             oldUser.setEmail(email);
         }
         String password = newUser.getUserPassword();
-        if(password !=null &&!password.isEmpty()){
-            boolean validPassword=bCryptPasswordEncoder.matches(oldRawPassword ,oldUser.getUserPassword());
-            if(validPassword){
+        if (password != null && !password.isEmpty()) {
+            boolean validPassword = bCryptPasswordEncoder.matches(oldRawPassword, oldUser.getUserPassword());
+            if (validPassword) {
                 oldUser.setUserPassword(bCryptPasswordEncoder.encode(password));
                 return "Password change successful";
-            }else{
+            } else {
                 return "Invalid password";
             }
         }
         userDao.save(oldUser);
-        return  "11";
+        return "11";
     }
 
     @Override
@@ -91,40 +115,40 @@ public class UserServiceImp implements UserService {
         return userDao.findByUserName(userName);
     }
 
-    private String alreadyExists(User user){
-        if(userDao.existsByUserName(user.getUserName())){
+    private String alreadyExists(User user) {
+        if (userDao.existsByUserName(user.getUserName())) {
             return "User already Exists";
-        } else if(userDao.existsByEmail(user.getEmail())) {
+        } else if (userDao.existsByEmail(user.getEmail())) {
             return "Email already exists";
         }
         return null;
     }
 
-    public  void setUserFinalVale(User user, String roleName){
-        String vCode= (int) (Math.random()*1000000)+"";
-        Set<Role> roles= getRolesByName(roleName);
+    public void setUserFinalVale(User user, String roleName) {
+        String vCode = (int) (Math.random() * 1000000) + "";
+        Set<Role> roles = getRolesByName(roleName);
         Date newDate = new Date();
         Calendar c = Calendar.getInstance();
         c.setTime(newDate);
         c.add(Calendar.DATE, 3);
-        Date expDate= c.getTime();
+        Date expDate = c.getTime();
         String password = bCryptPasswordEncoder.encode(user.getUserPassword());
         user.setRoles(roles);
         user.setUserPassword(password);
         user.setVerifyCode(vCode);
-        user.setCodeExpDate(expDate);
-        if(roleName.equals("ADMIN")){
+//        user.setCodeExpDate(expDate);
+        if (roleName.equals("ADMIN")) {
             user.setIsVerified(true);
-        }else {
+        } else {
             user.setIsVerified(true);
         }
     }
 
-    private Set<Role> getRolesByName(String roleName){
+    private Set<Role> getRolesByName(String roleName) {
         Set<Role> roles = roleDao.findByName(roleName);
-        if(roles.isEmpty()){
+        if (roles.isEmpty()) {
             Role role = roleDao.save(new Role(roleName));
-            return (role != null) ? getRolesByName(roleName):null;
+            return (role != null) ? getRolesByName(roleName) : null;
         }
         return roles;
     }

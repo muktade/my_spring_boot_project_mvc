@@ -4,6 +4,7 @@ package com.myproject.test.myproject.controller;
 import com.myproject.test.myproject.entity.Admin;
 import com.myproject.test.myproject.entity.User;
 import com.myproject.test.myproject.service.AdminService;
+import com.myproject.test.myproject.service.UserService;
 import com.myproject.test.myproject.utils.DataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -19,6 +20,8 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Map;
+
+import static javax.swing.text.html.CSS.getAttribute;
 
 @Controller
 @RequestMapping("/admin/")
@@ -39,6 +42,8 @@ public class AdminConttroller {
 
     }
 
+
+
     @PostMapping("register")
     public String register(Admin admin, BindingResult result, @RequestParam("image")MultipartFile photo, HttpServletRequest request, Model model){
         String message ="Please insert All the information";
@@ -56,6 +61,33 @@ public class AdminConttroller {
         }
         moduleController.formModel(model, "register", admin, "/admin/register", message);
         return "/html/index";
+    }
+
+    @GetMapping("registeruser")
+    public String registerUserForm(Model model){
+        moduleController.formModel(model,"register", new User(), "/admin/registeruser", null);
+        return "/user_registation";
+
+    }
+    @Autowired
+    private UserService userService;
+    @PostMapping("registeruser")
+    public String registerUser(User user, BindingResult result, @RequestParam("image")MultipartFile photo, HttpServletRequest request, Model model){
+        String message ="Please insert All the information";
+        if(!result.hasErrors()){
+//            User user = getUserFromUserRequest(request);
+            message = userService.userRegister( user,photo);
+            switch (message){
+                case "0":
+                    message = "Photo is not save";
+                    break;
+                case "1":
+                    message= "Registration successful";
+                    break;
+            }
+        }
+        moduleController.formModel(model, "register", user, "/admin/registeruser", message);
+        return "redirect:/html/index";
     }
 
     @GetMapping
@@ -80,9 +112,21 @@ public class AdminConttroller {
         user.setUserName(request.getParameter("username"));
         user.setEmail(request.getParameter("email"));
         user.setUserPassword(request.getParameter("password"));
+//        user.setPhoto(request.getParameter("photo"));
+//        user.setUserBirth(request.getParameter("user_birth"));
 
         return user;
     }
 
+    private User getUserFromUserRequest(HttpServletRequest request) {
+        User user = new User();
+        user.setUserName(request.getParameter("username"));
+        user.setEmail(request.getParameter("email"));
+        user.setUserPassword(request.getParameter("password"));
+//        user.setPhoto(request.getParameter("photo"));
+//        user.setUserBirth(request.getParameter("user_birth"));
+
+        return user;
+    }
 
 }

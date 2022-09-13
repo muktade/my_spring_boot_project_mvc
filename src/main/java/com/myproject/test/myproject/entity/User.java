@@ -2,6 +2,7 @@ package com.myproject.test.myproject.entity;
 
 
 import lombok.Data;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -26,7 +27,7 @@ public class User extends BaseEntity {
 
     @Lob
     @Column(name = "photo", columnDefinition = "longblob")
-    private String photo;
+    private MultipartFile photo;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_role", joinColumns = {
