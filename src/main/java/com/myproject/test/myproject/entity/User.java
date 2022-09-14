@@ -13,7 +13,7 @@ import java.util.Set;
 @Data
 @Table(name = "user")
 public class User extends BaseEntity {
-    @Column(name = "user_name", nullable = false,insertable = false, updatable = false)
+    @Column(name = "user_name", nullable = false)
     private String userName;
 
     @Column(name = "user_email",nullable = false, unique = false)

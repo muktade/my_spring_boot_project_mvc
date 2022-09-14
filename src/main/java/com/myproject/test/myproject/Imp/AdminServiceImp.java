@@ -23,22 +23,28 @@ public class AdminServiceImp implements AdminService {
 
     @Override
     public String register(Admin admin, User user, MultipartFile pht) {
-        String status= alreadyExists(admin);
-        if(status !=null){
+        String status = alreadyExists(admin);
+        if (status != null) {
             return status;
-        }else {
-            status = userService.registerUser(user, "ADMIN");
-            if (!status.equals("1")) {
-                return status;
-            }
-            else {
-                String photo = pht.toString();
-                admin.setPhoto(photo);
-                admin.setIsActive(true);
-                adminDao.save(admin);
-                return  (photo != null) ? "1":"0";
-            }
         }
+        status = userService.registerUser(user, "ADMIN");
+        if (!status.equals("1")) {
+            return status;
+        }
+
+        String photo = pht.toString();
+//        admin.setPhoto(pht);
+        if(admin.getName()==null){
+            admin.setName(admin.getUserName());
+        }
+        admin.setUserId(null);
+        admin.setPhoto(null);
+        admin.setIsActive(true);
+        System.out.println("admin info: "+admin);
+        adminDao.save(admin);
+        return (photo != null) ? "1" : "0";
+
+
     }
 
     @Override
@@ -47,11 +53,11 @@ public class AdminServiceImp implements AdminService {
         admin.setNationalId(currentAdmin.getNationalId());
         admin.setIsActive(currentAdmin.getIsActive());
         admin.setUserId(currentAdmin.getUserId());
-        String oldPhoto = currentAdmin.getPhoto();
-        String newPhoto = admin.getPhoto();
-        if(newPhoto == null){
+        MultipartFile oldPhoto = currentAdmin.getPhoto();
+        MultipartFile newPhoto = admin.getPhoto();
+        if (newPhoto == null) {
             admin.setPhoto(currentAdmin.getPhoto());
-        }else {
+        } else {
             admin.setPhoto(oldPhoto);
         }
         return adminDao.save(admin);
@@ -60,15 +66,14 @@ public class AdminServiceImp implements AdminService {
     @Override
     public String updatePhoto(MultipartFile pht, String userName) {
         String photo = pht.toString();
-        if(photo==null){
+        if (photo == null) {
             return "Photo not found";
-        }else {
+        } else {
             String exitsPhoto = adminDao.findPhoto(userName);
-            Integer count = adminDao.updateProfilePhoto(photo,userName);
-            if(count==1){
+            Integer count = adminDao.updateProfilePhoto(photo, userName);
+            if (count == 1) {
                 return "Photo Update Success";
-            }
-            else {
+            } else {
                 return "Something is not Write";
             }
         }
@@ -79,11 +84,10 @@ public class AdminServiceImp implements AdminService {
         return adminDao.findByUserName(userName);
     }
 
-    private String alreadyExists(Admin admin){
-        if(adminDao.existsByNationalId(admin.getNationalId())){
+    private String alreadyExists(Admin admin) {
+        if (adminDao.existsByNationalId(admin.getNationalId())) {
             return "National ID already exits";
-        }
-        else if (adminDao.existsByPhone(admin.getPhone())) {
+        } else if (adminDao.existsByPhone(admin.getPhone())) {
             return "Phone is already exists";
         }
         return null;

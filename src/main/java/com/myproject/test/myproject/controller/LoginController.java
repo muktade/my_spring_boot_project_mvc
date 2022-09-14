@@ -53,13 +53,15 @@ public class LoginController {
     @PostMapping(value = {"/loginsuccess", "/loginsuccess/{message}"})
     public String loginsSuccess(@PathVariable(value = "message", required = false) String message, Model model, HttpSession session){
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        System.out.println(username);
         Collection<GrantedAuthority> authorities = (Collection<GrantedAuthority>) SecurityContextHolder.getContext().getAuthentication().getAuthorities();
         String page ="";
         String roleAdmin= "ROLE_ADMIN";
         String roleManager= "ROLE_MANAGER";
         String roleUser= "ROLE_USER";
-
         for (GrantedAuthority authority : authorities){
+            System.out.println("role: "+authority.getAuthority());
+
             if(authority.getAuthority().equals(roleAdmin)){
                 Admin admin = adminService.getByUserName(username);
                 if(admin != null){

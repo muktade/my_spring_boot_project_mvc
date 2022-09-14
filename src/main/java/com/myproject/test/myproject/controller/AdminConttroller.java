@@ -45,10 +45,13 @@ public class AdminConttroller {
 
 
     @PostMapping("register")
-    public String register(Admin admin, BindingResult result, @RequestParam("image")MultipartFile photo, HttpServletRequest request, Model model){
+    public String register(Admin admin, BindingResult result, @RequestParam("photo") MultipartFile photo, HttpServletRequest request, Model model){
         String message ="Please insert All the information";
+        System.out.println("register");
+        System.out.println(result);
         if(!result.hasErrors()){
             User user = getUserFromRequest(request);
+            System.out.println(user);
             message = adminService.register(admin, user,photo);
             switch (message){
                 case "0":
@@ -72,7 +75,7 @@ public class AdminConttroller {
     @Autowired
     private UserService userService;
     @PostMapping("registeruser")
-    public String registerUser(User user, BindingResult result, @RequestParam("image")MultipartFile photo, HttpServletRequest request, Model model){
+    public String registerUser(User user, BindingResult result, @RequestParam("photo") MultipartFile photo, HttpServletRequest request, Model model){
         String message ="Please insert All the information";
         if(!result.hasErrors()){
 //            User user = getUserFromUserRequest(request);
@@ -109,9 +112,9 @@ public class AdminConttroller {
 
     private User getUserFromRequest(HttpServletRequest request) {
         User user = new User();
-        user.setUserName(request.getParameter("username"));
+        user.setUserName(request.getParameter("userName"));
         user.setEmail(request.getParameter("email"));
-        user.setUserPassword(request.getParameter("password"));
+        user.setUserPassword(request.getParameter("userPassword"));
 //        user.setPhoto(request.getParameter("photo"));
 //        user.setUserBirth(request.getParameter("user_birth"));
 

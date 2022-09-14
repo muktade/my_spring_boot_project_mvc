@@ -2,6 +2,7 @@ package com.myproject.test.myproject.entity;
 
 import lombok.CustomLog;
 import lombok.Data;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 
@@ -15,7 +16,7 @@ public class Admin extends BaseEntity {
     @Column(name = "user_name", nullable = false)
     private String userName;
 
-    @Column(name = "phone", nullable = false)
+    @Column(name = "phone", unique = true)
     private String phone;
 
     @Column(name = "email", nullable = false)
@@ -23,6 +24,9 @@ public class Admin extends BaseEntity {
 
     @Column(name = "national_id", unique = true)
     private String nationalId;
+
+    @Column(name = "user_password", nullable = false)
+    private String userPassword;
 
     @Column(name = "present_address",length = 65535, columnDefinition = "text")
     private String presentAddress;
@@ -32,7 +36,7 @@ public class Admin extends BaseEntity {
 
     @Lob
     @Column(name = "photo", columnDefinition = "longblob")
-    private String photo;
+    private MultipartFile photo;
 
     @Column(name = "is_active")
     private Boolean isActive;
