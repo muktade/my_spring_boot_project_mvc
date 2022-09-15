@@ -6,9 +6,12 @@ body {
 }
 
 .box {
-    position: absolute;
+    position: relative;
     transform: translate(-50%, -50%);
-    top: 50%;
+    /*top: 50%;*/
+    top: 340px;
+    margin-top: 60px;
+    margin-bottom: 185px;
     left: 50%;
     width: 400px;
     padding: 40px;
@@ -50,12 +53,12 @@ h1 {
 
 .btn-submit:hover {
     width: 100%;
-    /*            position: fixed;*/
+    position: fixed;
     opacity: .5;
-    transform: rotate(360deg);
+    /*transform: rotate(360deg);*/
     position: static;
     font-size: 20px;
-    /*            transform: scaleX(100%);*/
+    transform: scaleX(100%);
 }
 
 .lable {
@@ -69,8 +72,8 @@ h1 {
     padding: 5px 0;
 }
 
-.input:focus~.lable,
-.input:valid~.lable {
+.input:focus ~ .lable,
+.input:valid ~ .lable {
     top: -18px;
     font-size: 12px;
     color: #03a9f4;
@@ -98,10 +101,11 @@ h1 {
     position: relative;
 }
 
-.input:focus~.input {
+.input:focus ~ .input {
     background-color: #fff;
 
 }
+
 .input,
 .lable {
     margin-bottom: 25px;

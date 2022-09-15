@@ -4,30 +4,36 @@
     <title>
         Login
     </title>
+    <div th:replace="~{html/index :: header-titel}"></div>
     <link th:href="@{/dist/css/login.css}" rel="stylesheet">
 </header>
-
+<div th:replace="~{html/index :: header-style}"></div>
 <body>
-<div class="box" th:if="${entity}">
-    <h1>
-        Login
-    </h1>
-    <form th:action="@{${action}}" th:object="${entity}" action="#"
-            method="post">
-        <div class="input-box">
-            <input class="input" name="user" th:field="*{userName}" required type="text">
-            <label class="lable">User Name</label>
-        </div>
-        <div class="input-box">
-            <input class="input" name="pass" th:field="*{userPassword}" required type="password">
-            <label class="lable">Enter Your Password</label>
-        </div>
-        <div class="input-box">
-            <input class="btn-submit" name="submit" type="submit">
+<div class="page">
+    <div th:replace="~{html/index :: header}"></div>
+    <div class="box" th:if="${entity}">
+        <h1>
+            Login
+        </h1>
+        <form th:action="@{${action}}" th:object="${entity}" action="#"
+              method="post">
+            <div class="input-box">
+                <input class="input" name="user" th:field="*{userName}" required type="text">
+                <label class="lable">User Name</label>
+            </div>
+            <div class="input-box">
+                <input class="input" name="pass" th:field="*{userPassword}" required type="password">
+                <label class="lable">Enter Your Password</label>
+            </div>
+            <div class="input-box">
+                <input class="btn-submit" name="submit" type="submit">
 
-        </div>
-    </form>
+            </div>
+        </form>
+    </div>
+    <div th:replace="~{html/index::footer}"></div>
 </div>
 </body>
-
+<script th:src="@{/dist/js/core.min.js}"></script>
+<script th:src="@{/dist/js/script.js}"></script>
 </html>

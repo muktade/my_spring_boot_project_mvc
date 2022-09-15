@@ -46,8 +46,8 @@ public class LoginController {
         }
         List<Role>  roles = roleDao.findAll();
         moduleController.multiChoiceFormModule(model,"user_login",new User(), "/login", roles, message);
-//        return "html/index";
-        return "user_login";
+        return "html/index";
+//        return "user_login";
     }
 
     @PostMapping(value = {"/loginsuccess", "/loginsuccess/{message}"})
@@ -90,7 +90,7 @@ public class LoginController {
                 page="redirect: /html/index";
             }
             else {
-                page="redirect:/";
+                page="redirect:/home";
             }
         }
         return page;
