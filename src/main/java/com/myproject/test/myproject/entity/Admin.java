@@ -25,6 +25,9 @@ public class Admin extends BaseEntity {
     @Column(name = "national_id", unique = true)
     private String nationalId;
 
+    @Column (name="role", nullable = false)
+    private String userRole;
+
     @Column(name = "user_password", nullable = false)
     private String userPassword;
 

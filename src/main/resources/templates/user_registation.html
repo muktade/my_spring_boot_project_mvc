@@ -38,8 +38,17 @@
                 <!--      <label class="lable">User Profile Image</label>-->
             </div>
             <div class="input-box">
-                <input class="input" th:value="user" name="role" readonly type="text">
-                <label class="lable"></label>
+<!--                <input class="input" th:field="*{userRole}" name="role" type="text">-->
+<!--                <select th:field="*{role}">-->
+<!--                    <option disabled value="">Please select Role</option>-->
+<!--                    <option th:value="user" th:text="User"></option>-->
+<!--                    <option th:value="admin" th:text="Admin"></option>-->
+<!--                </select>-->
+                <select   th:field="*{userRole}" class="form-control" id="dropDownList">
+                    <option value="0">select role</option>
+                    <option th:each="option : ${options}" th:value="${option}" th:text="${option}"></option>
+                </select>
+<!--                <label class="lable"></label>-->
             </div>
             <div class="input-box">
                 <input class="input" name="pass" th:field="*{userPassword}" required type="password">

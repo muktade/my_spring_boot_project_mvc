@@ -27,7 +27,7 @@ public class AdminServiceImp implements AdminService {
         if (status != null) {
             return status;
         }
-        status = userService.registerUser(user, "ADMIN");
+        status = userService.registerUser(user, "USER");
         if (!status.equals("1")) {
             return status;
         }

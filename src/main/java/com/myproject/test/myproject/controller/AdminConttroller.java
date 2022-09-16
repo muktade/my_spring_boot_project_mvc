@@ -19,6 +19,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import static javax.swing.text.html.CSS.getAttribute;
@@ -38,11 +40,14 @@ public class AdminConttroller {
     @GetMapping("register")
     public String registerForm(Model model){
         moduleController.formModel(model,"register", new Admin(), "/admin/register", null);
+        List<String> role = new ArrayList<>();
+        role.add("admin");
+        role.add("user");
+//        options.add("option 3");
+        model.addAttribute("options", role);
         return "/user_registation";
 
     }
-
-
 
     @PostMapping("register")
     public String register(Admin admin, BindingResult result, @RequestParam("photo") MultipartFile photo, HttpServletRequest request, Model model){

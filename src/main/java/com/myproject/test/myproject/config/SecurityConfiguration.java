@@ -11,6 +11,9 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.firewall.DefaultHttpFirewall;
+import org.springframework.security.web.firewall.HttpFirewall;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 
 @Configuration
@@ -35,16 +38,23 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/static/**", "/dist/**", "/css/**", "/fonts/**", "/js/**", "/images/**", "/ie8-panel/**").permitAll()
 
                 .antMatchers("/home").hasAuthority("USER")
-                .antMatchers("/admin/register").hasAuthority("ADMIN")
+                .antMatchers("/admin/register").permitAll()
                 .anyRequest().authenticated()
-                .and().httpBasic();
+                .and().formLogin().loginPage("/login").permitAll()
+                .successForwardUrl("/loginsuccess")
+                .and().logout()
+                .invalidateHttpSession(true)
+                .clearAuthentication(true)
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/login").permitAll()
+                .and().exceptionHandling().accessDeniedHandler(loggingAccessDeniedHandler);
     }
 
     //    @Autowired
 //    private UserDetailsServiceImpl userDetailsServiceImpl;
 //
-//    @Autowired
-//    private LoggingAccessDeniedHandler loggingAccessDeniedHandler;
+    @Autowired
+    private LoggingAccessDeniedHandler loggingAccessDeniedHandler;
 //
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
@@ -52,10 +62,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 //
-//    @Bean
-//    public HttpFirewall defaultHtttpFirewall() {
-//        return new DefaultHttpFirewall();
-//    }
+    @Bean
+    public HttpFirewall defaultHtttpFirewall() {
+        return new DefaultHttpFirewall();
+    }
 //    @Override
 //    protected void configure(HttpSecurity httpSecurity) throws Exception{
 //
