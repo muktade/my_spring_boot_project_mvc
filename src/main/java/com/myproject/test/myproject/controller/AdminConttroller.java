@@ -80,11 +80,11 @@ public class AdminConttroller {
     @Autowired
     private UserService userService;
     @PostMapping("registeruser")
-    public String registerUser(User user, BindingResult result, @RequestParam("photo") MultipartFile photo, HttpServletRequest request, Model model){
+    public String registerUser(User user, BindingResult result, @RequestParam("image") MultipartFile photo, HttpServletRequest request, Model model){
         String message ="Please insert All the information";
         if(!result.hasErrors()){
 //            User user = getUserFromUserRequest(request);
-            message = userService.userRegister( user,photo);
+            message = userService.registerUser(user,"USER");
             switch (message){
                 case "0":
                     message = "Photo is not save";

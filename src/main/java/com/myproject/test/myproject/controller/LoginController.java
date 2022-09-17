@@ -46,7 +46,7 @@ public class LoginController {
         }
         List<Role>  roles = roleDao.findAll();
         moduleController.multiChoiceFormModule(model,"user_login",new User(), "/login", roles, message);
-        return "html/index";
+        return "user_login";
 //        return "user_login";
     }
 
@@ -72,8 +72,9 @@ public class LoginController {
                     page = "redirect :/html/index";
                 }
                 else {
-                    moduleController.formModel(model,"admin-register", new Admin(), "/admin/register", "please complete your registration");
-                    page = "html/index";
+                    moduleController.formModel(model,"admin-register", new Admin(), "/admin/register",
+                            "please complete your registration");
+                    page = "redirect: /admin/register";
                 }
 
             } else if (authority.getAuthority().equals(roleManager)) {
@@ -90,7 +91,9 @@ public class LoginController {
                 page="redirect: /html/index";
             }
             else {
-                page="redirect:/home";
+                moduleController.formModel(model,"admin-register", new User(), "/admin/register",
+                        "please complete your user registration");
+                page = "redirect: /admin/register";
             }
         }
         return page;

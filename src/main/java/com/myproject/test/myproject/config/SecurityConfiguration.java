@@ -34,14 +34,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/login").permitAll()
+        http.authorizeRequests().antMatchers("/login","/admin/registeruser").permitAll()
                 .antMatchers("/static/**", "/dist/**", "/css/**", "/fonts/**", "/js/**", "/images/**", "/ie8-panel/**").permitAll()
 
-                .antMatchers("/home").hasAuthority("USER")
+                .antMatchers("/home").permitAll()
                 .antMatchers("/admin/register").permitAll()
                 .anyRequest().authenticated()
                 .and().formLogin().loginPage("/login").permitAll()
                 .successForwardUrl("/loginsuccess")
+                .defaultSuccessUrl("/loginsuccess")
                 .and().logout()
                 .invalidateHttpSession(true)
                 .clearAuthentication(true)

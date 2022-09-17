@@ -34,6 +34,7 @@ public class UserServiceImp implements UserService {
             return status;
         }
         setUserFinalVale(user, roleName);
+        user.setUserRole(roleName);
         userDao.save(user);
         return "1";
     }
