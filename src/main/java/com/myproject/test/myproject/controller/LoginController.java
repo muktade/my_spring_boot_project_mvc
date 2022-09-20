@@ -51,7 +51,8 @@ public class LoginController {
     }
 
     @PostMapping(value = {"/loginsuccess", "/loginsuccess/{message}"})
-    public String loginsSuccess(@PathVariable(value = "message", required = false) String message, Model model, HttpSession session){
+    public String loginsSuccess(@PathVariable(value = "message", required = false) String message, Model model,
+                                HttpSession session){
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         System.out.println(username);
         Collection<GrantedAuthority> authorities = (Collection<GrantedAuthority>) SecurityContextHolder.getContext().getAuthentication().getAuthorities();
